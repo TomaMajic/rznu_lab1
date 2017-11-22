@@ -1,6 +1,7 @@
-class PhotosController < ApplicationController
+class PhotosController < ApiController
 	before_action :set_user
 	before_action :set_user_photo, only: [:show, :update, :destroy] 
+	before_action :require_login
 
 	# GET /users/:user_id/photos
 	def index
