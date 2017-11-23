@@ -32,6 +32,10 @@ class PhotosController < ApiController
 		head :no_content
 	end
 
+	def options
+		puts "POZVA SI ME"
+	end
+
 	private
 
 	def photo_params

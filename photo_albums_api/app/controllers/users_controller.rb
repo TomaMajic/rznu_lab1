@@ -30,6 +30,9 @@ class UsersController < ApplicationController
 		head :no_content
 	end
 
+	def options
+		# head :allowed
+	end
 
 	private 
 
