@@ -31,7 +31,11 @@ class UsersController < ApplicationController
 	end
 
 	def options
-		# head :allowed
+		headers['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
+		headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+		headers['Access-Control-Max-Age'] = '1000'
+		headers['Access-Control-Allow-Headers'] = '*,x-requested-with'
+		head :ok
 	end
 
 	private 
