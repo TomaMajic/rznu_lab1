@@ -23,17 +23,29 @@ class PhotosController < ApiController
 	# PUT /users/:user_id/photos/:id
 	def update 
 		@photo.update(photo_params)
-		head :no_content
+		head :ok
 	end
 
 	# DELETE /users/:user_id/photos/:id
 	def destroy
 		@photo.destroy
-		head :no_content
+		head :ok
 	end
 
 	def options
-		puts "POZVA SI ME"
+		headers['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
+		headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+		headers['Access-Control-Max-Age'] = '1000'
+		headers['Access-Control-Allow-Headers'] = '*,x-requested-with'
+		head :ok
+	end
+
+	def options_single
+		headers['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
+		headers['Access-Control-Allow-Methods'] = 'GET, PUT, DELETE, OPTIONS'
+		headers['Access-Control-Max-Age'] = '1000'
+		headers['Access-Control-Allow-Headers'] = '*,x-requested-with'
+		head :ok
 	end
 
 	private

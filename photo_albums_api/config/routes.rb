@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 	end
 
 	match '/users' => "users#options", via: :options
+	match '/users/:user_id' => "users#options_single", via: :options
+	match '/users/:user_id/photos' => "photos#options", via: :options
+	match '/users/:user_id/photos/:photo_id' => "photos#options_single", via: :options
 	# match '/photos' => "users#options", via: :options
 	match '*' => "application#undefined_options", via: :options
 

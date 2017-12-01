@@ -21,18 +21,26 @@ class UsersController < ApplicationController
 	# PUT /users/:id
 	def update 
 		@user.update(user_params)
-		head :no_content
+		head :ok
 	end
 
 	# DELETE /users/:id
 	def destroy
 		@user.destroy
-		head :no_content
+		head :ok
 	end
 
 	def options
 		headers['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
 		headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+		headers['Access-Control-Max-Age'] = '1000'
+		headers['Access-Control-Allow-Headers'] = '*,x-requested-with'
+		head :ok
+	end
+
+	def options_single
+		headers['Access-Control-Allow-Origin'] = request.env['HTTP_ORIGIN']
+		headers['Access-Control-Allow-Methods'] = 'GET, PUT, DELETE, OPTIONS'
 		headers['Access-Control-Max-Age'] = '1000'
 		headers['Access-Control-Allow-Headers'] = '*,x-requested-with'
 		head :ok
