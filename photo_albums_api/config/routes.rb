@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+ 	get 'api_doc/index'
+
 	resources :users do 
 		resources :photos
 	end
